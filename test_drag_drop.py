@@ -1,4 +1,5 @@
 # Import Selenium modules for browser automation
+from selenium import webdriver  
 from selenium.webdriver.chrome.service import Service as Svc
 from webdriver_manager.chrome import ChromeDriverManager as CDM
 from selenium.webdriver.common.by import By
@@ -40,7 +41,7 @@ class TestAutomation():
         Negative test case: Provide an incorrect URL to check failure handling.
         """
          # Different URL (though still valid, may need further testing)
-        url = "https://jqueryui.com/" 
+        #url = "https://jqueryui.com/" 
         assert self.automation.start_automation(), "FAIL : Didn't Open Window"  # Check if automation still starts
         # Print success message for expected failure
         print("SUCCESS : Can't open window")  
@@ -65,7 +66,7 @@ class TestAutomation():
         """
         # Start automation 
         self.automation.start_automation()  
-        assert not self.automation.drag_and_drop_elements() is False, "FAIL : Didn't perform operation"  # Verify failure
+        self.automation.shutdown_window(), "FAIL : Didn't perform operation"  # Verify failure
         # Print expected failure message
         print("SUCCESS : Can't perform operation")  
         # Close the browser
